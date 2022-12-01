@@ -81,6 +81,10 @@ int main()
 	}
 
 	std::cout << "   ||		------	  ||" << "\n";
-	std::cout << "  Calories:	------	" << top[0] + top[1] + top[2] << "\n";
+	std::cout << "  Calories:	------	";
+	int t = 0;
+	for (int i = 0; i < TOP_SIZE; i++)
+		t += top[i];
+	std::cout << t << "\n";
 	std::cout << "===============================" << "\n";
 }
