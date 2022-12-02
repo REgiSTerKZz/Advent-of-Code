@@ -1,0 +1,3 @@
+﻿  Day 02.cpp
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 02\Day 02.cpp(105): warning C4715: 'CalculateScore': not all control paths return a value
+  Day 02.vcxproj -> C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 02.exe
