@@ -10,33 +10,21 @@
 #include <Windows.h>	// Add color to console (Fun)
 
 
-/*
-* 
-* TOTAL SCORE
-* 
-* ROCK 
-*	Enemy	= A
-*	You		= X
-*	Points	= 1
-* 
-* PAPER 
-*	Enemy	= B
-*	You		= Y
-*	Points	= 2
-* 
-* SCISSORS 
-*	Enemy	= C
-*	You		= Z
-*	Points	= 3
-* 
-* LOST		= 0
-* DRAW		= 3
-* WIN		= 6
-* 
-*/
+enum COLOR
+{
+	BLUE = 1,
+	GREEN = 2,
+	RED = 4,
+	WHITE = 7
+};
 
 
 int totalScore = 0;
+HANDLE hConsole;
+
+void SetColor(int _c) {
+	SetConsoleTextAttribute(hConsole, _c);
+}
 
 /// <summary>
 /// Given a Delimiter, splits the string input into different strings
@@ -54,7 +42,7 @@ std::vector<std::string> Split(const std::string& s, char delimiter)
 }
 
 
-int CalculateScore(std::string _e, std::string _m, std::string &_result) {
+int CalculateScore(std::string _e, std::string _m, std::string &_result, COLOR &_c) {
 	int score = 0;
 
 	if		(_m == "ROCK") score = 1;
@@ -65,6 +53,7 @@ int CalculateScore(std::string _e, std::string _m, std::string &_result) {
 	if (_e == _m) {
 		score += 3;
 		_result = "DRAW";
+		_c = BLUE;
 		return score;
 	}
 
@@ -72,10 +61,12 @@ int CalculateScore(std::string _e, std::string _m, std::string &_result) {
 	if (_e == "ROCK") {
 		if (_m == "SCISSOR") {			// LOSE
 			_result = "LOSE";
+			_c = RED;
 			return score;
 		}
 		else if (_m == "PAPER") {		// WIN
 			_result = "WIN";
+			_c = GREEN;
 			score += 6;
 			return score;
 		}
@@ -83,10 +74,12 @@ int CalculateScore(std::string _e, std::string _m, std::string &_result) {
 	else if (_e == "PAPER") {
 		if (_m == "ROCK") {				// LOSE
 			_result = "LOSE";
+			_c = RED;
 			return score;
 		}
 		else if (_m == "SCISSOR") {		// WIN
 			_result = "WIN";
+			_c = GREEN;
 			score += 6;
 			return score;
 		}
@@ -94,20 +87,40 @@ int CalculateScore(std::string _e, std::string _m, std::string &_result) {
 	else if (_e == "SCISSOR") {
 		if (_m == "PAPER") {			// LOSE
 			_result = "LOSE";
+			_c = RED;
 			return score;
 		}
 		else if (_m == "ROCK") {		// WIN
 			_result = "WIN";
+			_c = GREEN;
 			score += 6;
 			return score;
 		}
 	}
 }
 
-void ConvertResult(std::string _input)
+int CalculateScoreTwo(std::string _m, std::string _res) {
+	int score = 0;
+	
+	// YOU
+	if		(_m == "ROCK")		score = 1;
+	else if (_m == "PAPER")		score = 2;
+	else if (_m == "SCISSOR")	score = 3;
+
+	// RESULT
+	if		(_res == "Y")		score += 3;			// Draw -> +3
+	else if (_res == "Z")		score += 6;			// WIN  -> +6
+
+	return score;
+}
+
+
+void PartOne(std::string _input)
 {
 	if (_input == "")	return;
 
+	COLOR mColor = WHITE;
+	SetColor(mColor);
 
 	std::string e = "";			// Enemy play
 	std::string m = "";			// My play
@@ -125,14 +138,52 @@ void ConvertResult(std::string _input)
 	else if (cleanInput[1] == "Z") m = "SCISSOR";
 
 	std::string res;
-	int score = CalculateScore(e, m, res);
+	int score = CalculateScore(e, m, res, mColor);
 
 	std::cout << "Enemy ->	" << e << "	---vs---   " << m << "   <- You";
-	std::cout << "	Score: " << score << "	Result: " << res << "\n";
+	std::cout << "	Score: " << score << "	Result: ";
+	SetColor(mColor);
+	std::cout << res << "\n";
 	totalScore += score;
 }
 
+void PartTwo(std::string _input) {
+	std::string e = "";			// Enemy play
+	std::string m = "";			// My expected play
+	int expRes;					// Expected result
 
+	// Split the input between the Enemy and yours
+	std::vector<std::string> cleanInput = Split(_input, ' ');
+
+	// Get the enemy's play
+	if (cleanInput[0] == "A") e = "ROCK";
+	else if (cleanInput[0] == "B") e = "PAPER";
+	else if (cleanInput[0] == "C") e = "SCISSOR";
+
+	// Get winning play depending on the enemy & expected Result
+
+
+	// DRAW -> Return the same play as the enemy
+	if (cleanInput[1] == "Y")
+	{
+		m = e;
+	}
+
+	if (e == "ROCK") {
+		if		(cleanInput[1] == "X") { m = "SCISSOR"; }		// LOSE -> SCISSOR
+		else if (cleanInput[1] == "Z") { m = "PAPER"; }			// WIN  -> PAPER
+	}
+	else if (e == "PAPER") {
+		if		(cleanInput[1] == "X") { m = "ROCK"; }			// LOSE -> ROCK
+		else if (cleanInput[1] == "Z") { m = "SCISSOR"; }		// WIN  -> SCISSOR
+	}
+	else if (e == "SCISSOR") {
+		if		(cleanInput[1] == "X") { m = "PAPER"; }			// LOSE -> PAPER
+		else if (cleanInput[1] == "Z") { m = "ROCK"; }			// WIN  -> ROCK
+	}
+
+	totalScore += CalculateScoreTwo(m, cleanInput[1]);
+}
 
 
 
@@ -144,7 +195,7 @@ void ReadFile() {
 
 	while (getline(mFile, mStr))
 	{
-		ConvertResult(mStr);
+		PartTwo(mStr);
 	}
 
 	mFile.close();
@@ -153,6 +204,7 @@ void ReadFile() {
 
 int main()
 {
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	ReadFile();
 
 	std::cout << "Total Score: " << totalScore << "\n\n";
