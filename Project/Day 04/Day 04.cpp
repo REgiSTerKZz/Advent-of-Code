@@ -7,6 +7,10 @@
 *	Get the numbers between the 2 diits in each sector	-> (2-4,6-8) -> (2,3,4	&	6,7,8)
 *	Check if any of the pair is inside one another (If min > min2 & max < max2)
 *	Add the total of pairs that are completely inside one another
+* 
+* PART 2
+*	Same as PART 1
+*	But only calculate the Overlapping ones
 */
 
 
