@@ -58,6 +58,36 @@ void PartOne(std::istringstream _input) {
 	}
 }
 
+// Result: QRQFHFWCL
+void PartTwo(std::istringstream _input) {
+	// Separate the first move
+	std::vector<std::string> mSplitedString;
+	std::stack<char> tStack;
+	std::string t;
+
+	while (getline(_input, t, ' '))
+	{
+		mSplitedString.push_back(t);
+	}
+
+	// MOVE mSplitedString[1]		FROM mSplitedString[3		TO	mSplitedString[5]
+
+	// Move to temp stack
+	for (int i = 0; i < std::stoi(mSplitedString[1]); i++)
+	{
+		// Swap
+		tStack.push(mStacks[std::stoi(mSplitedString[3]) - 1].top());
+		mStacks[std::stoi(mSplitedString[3]) - 1].pop();
+	}
+
+	// Move back to the desired stack
+	for (int i = 0; i < std::stoi(mSplitedString[1]); i++)
+	{
+		mStacks[std::stoi(mSplitedString[5]) - 1].push(tStack.top());
+		tStack.pop();
+	}
+}
+
 void ReadFile(std::string _file) {
 	std::vector<std::string> mStringVector;
 	std::string mString;
@@ -88,7 +118,7 @@ void ReadFile(std::string _file) {
 	{
 		getline(mFile, mString);
 
-		PartOne(std::istringstream(mString));
+		PartTwo(std::istringstream(mString));
 
 		if (mFile.eof()) { break; }
 	}
