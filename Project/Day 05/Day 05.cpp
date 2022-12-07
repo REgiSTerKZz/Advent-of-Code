@@ -1,10 +1,5 @@
 // GIVEN the Day 05 [Explanation](https://adventofcode.com/2022/day/5) this is the implementation by REgiSTerKZz
 
-/*
-* PART 1
-*/
-
-
 #include <iostream>
 #include <stack>
 #include <sstream>
@@ -12,7 +7,6 @@
 #include <string>
 #include <fstream>												// I / O with Files
 
-int totalSum = 0;
 std::vector<std::stack<char>> mStacks;
 
 
