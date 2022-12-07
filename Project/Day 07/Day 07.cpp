@@ -1,19 +1,31 @@
 // GIVEN the Day 07[Explanation](https://adventofcode.com/2022/day/7) this is the implementation by REgiSTerKZz
 
-#include <iostream>
-#include <stack>
+/*
+*	Create a Tree (Root is called /)
+*/
+
 #include <sstream>
-#include <vector>
-#include <string>
 #include <fstream>												// I / O with Files
 
-void PartOne(std::string _input) {
+#include "FileSystem.h"
 
+void PartOne(std::vector<std::string> _input) {
+	FileSystem mFS = FileSystem();
+	
+	if (_input[0] == "$")
+	{	// Command to execute
+	}
+
+	mFS.LS();
 }
+
 
 void ReadFile(std::string _file) {
 	std::string mString;
 	std::ifstream mFile;
+
+	std::vector<std::string> mSplitedStrings;
+	std::string tStr;
 
 	mFile.open(_file);
 
@@ -21,8 +33,13 @@ void ReadFile(std::string _file) {
 	{
 		//Read the Movements
 		getline(mFile, mString);
+		std::istringstream stream = std::istringstream(mString);
 
-		PartOne(mString);
+		while (getline(stream, tStr, ' '))
+		{ mSplitedStrings.push_back(tStr); }
+
+
+		PartOne(mSplitedStrings);
 
 		if (mFile.eof()) { break; }
 	}
@@ -32,5 +49,5 @@ void ReadFile(std::string _file) {
 
 int main()
 {
-	std::cout << "Hello World!\n";
+	ReadFile("Test_Input.txt");
 }
