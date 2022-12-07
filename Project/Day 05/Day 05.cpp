@@ -16,49 +16,82 @@ int totalSum = 0;
 std::vector<std::stack<char>> mStacks;
 
 
-void MySetup(std::vector<std::string> _s) {
+
+std::vector<std::stack<char>> MySetup(std::vector<std::string> _input) {
 	// We need to start creating the Stacks from the bottom (Second to last) -> _setup.size() - 2 
-	int numOfStacks = _s[_s.size() - 1][_s[_s.size() - 1].find(_s[_s.size() - 1][_s[_s.size() - 1].size() - 2])] - '0';
+	int numOfStacks = _input[_input.size() - 1][_input[_input.size() - 1].find(_input[_input.size() - 1][_input[_input.size() - 1].size() - 2])] - '0';
+
+	std::vector<std::stack<char>> _mStacks(numOfStacks);
 
 	// Init Stacks
-	for (size_t i = 0; i <= numOfStacks; i++)
+	for (int i = 0; i < numOfStacks; i++)
 	{
+		// Iterate the stacks
+		for (int j = _input.size()-2; j >= 0; j--)
+		{	// it = (i * 4) + 1
+			if (_input[j][(i * 4) + 1] == 32)
+			{ break; }
+			_mStacks[i].push(_input[j][(i * 4) + 1]);
+		}
 	}
-
-	return;
+	return _mStacks;
 }
 
-void PartOne(std::string _input) {
+// Result: TLFGBZHCN
+void PartOne(std::istringstream _input) {
+	// Separate the first move
+	std::vector<std::string> mSplitedString;
+	std::string t;
 
+	while (getline(_input, t, ' '))
+	{ mSplitedString.push_back(t); }
+
+	// MOVE mSplitedString[1]		FROM mSplitedString[3		TO	mSplitedString[5]
+
+	// elemToSwap = mStacks[std::stoi(mSplitedString[3]) - 1].top();
+
+	for (int i = 0; i < std::stoi(mSplitedString[1]); i++)
+	{
+		// Swap
+		mStacks[std::stoi(mSplitedString[5]) - 1].push(mStacks[std::stoi(mSplitedString[3]) - 1].top());
+		mStacks[std::stoi(mSplitedString[3]) - 1].pop();
+	}
 }
 
 void ReadFile(std::string _file) {
-	std::vector<std::string> mStr;
+	std::vector<std::string> mStringVector;
+	std::string mString;
 	std::ifstream mFile;
 	auto setup = false;
+	auto i = 0;
 
 	mFile.open(_file);
 
 	// Get Stacks
-	
-
-
-	int i = 0;
 	// PART ONE
 	while (true)
 	{
-		mStr.push_back("");
-		getline(mFile, mStr[i]);
+		mStringVector.push_back("");
+		getline(mFile, mStringVector[i]);
 
-		if (mStr[i] == "") 
+		if (mStringVector[i] == "") 
 		{ 
-			mStr.pop_back();
+			mStringVector.pop_back();
 			break; 
 		}
 		i++;
 	}
+	mStacks = MySetup(mStringVector);
 
-	MySetup(mStr);
+	// Read the Movements
+	while (true)
+	{
+		getline(mFile, mString);
+
+		PartOne(std::istringstream(mString));
+
+		if (mFile.eof()) { break; }
+	}
 
 
 	mFile.close();
@@ -66,7 +99,13 @@ void ReadFile(std::string _file) {
 
 int main()
 {
-	ReadFile("Test_Input.txt");
-	std::cout << "Total Sum: " << totalSum << "\n";
+	ReadFile("Input.txt");
+
+	std::cout << "Final Crates on Top: ";
+	for (int i = 0; i < mStacks.size(); i++)
+	{
+		std::cout << mStacks[i].top();
+	}
+	std::cout << "\n\n";
 
 }
