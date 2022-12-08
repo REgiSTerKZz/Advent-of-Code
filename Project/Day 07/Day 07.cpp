@@ -1,4 +1,4 @@
-// GIVEN the Day 07[Explanation](https://adventofcode.com/2022/day/7) this is the implementation by REgiSTerKZz
+// GIVEN the Day 07 [Explanation](https://adventofcode.com/2022/day/7) this is the implementation by REgiSTerKZz
 
 /*
 *	Create a Tree (Root is called /)
