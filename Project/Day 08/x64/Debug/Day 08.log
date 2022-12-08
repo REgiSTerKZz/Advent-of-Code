@@ -1,4 +1,4 @@
 ﻿  Day 08.cpp
-C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 08\Day 08.cpp(159,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 08\Day 08.cpp(160,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 08\Day 08.cpp(175,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 08\Day 08.cpp(176,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Day 08.vcxproj -> C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 08.exe
