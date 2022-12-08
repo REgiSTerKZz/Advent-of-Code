@@ -11,7 +11,7 @@ int FOREST_HEIGHT, FOREST_WIDTH;
 
 /*
 * Forest
-*	y +
+*	y -
 *	^
 *	|
 *	|
@@ -22,85 +22,104 @@ int GetTree(int _x, int _y) {
 	return mForest[_y][_x];
 }
 
-bool CheckIfVisible(int _x, int _y) {
+// =========================================================
+bool CheckLeft(int _tree, int _x, int _y) {
+	if (_x <= 0)
+	{ return _tree > GetTree(0, _y); }
+
 	int currTree = GetTree(_x, _y);
 
+	if (currTree < GetTree(_x - 1, _y) || currTree >= _tree) {
+		return false;
+	}
+	return CheckLeft(_tree, _x - 1, _y);
+}
 
-	if (_x == 0 || _x == FOREST_WIDTH)  { return true; }
-	if (_y == 0 || _x == FOREST_HEIGHT) { return true; }
+bool CheckRight(int _tree, int _x, int _y) {
+	if (_x >= FOREST_WIDTH - 1)
+	{ return _tree > GetTree(FOREST_WIDTH-1, _y); }
 
-	return CheckIfVisible(_x - 1, _y) || CheckIfVisible(_x + 1, _y) || CheckIfVisible(_x, _y - 1) || CheckIfVisible(_x, _y + 1);
+	int currTree = GetTree(_x, _y);
 
+	if (currTree < GetTree(_x + 1, _y) || currTree >= _tree) {
+		return false;
+	}
+	return CheckRight(_tree, _x + 1, _y);
+}
 
-	/*
+bool CheckTop(int _tree, int _x, int _y) {
+	if (_y <= 0)
+	{ return _tree > GetTree(_x, 0); }
 
-	// CENTER SIDE 
-	if (_x == FOREST_WIDTH / 2)
+	int currTree = GetTree(_x, _y);
+
+	if (currTree < GetTree(_x, _y-1) || currTree >= _tree) {
+		return false;
+	}
+	return CheckTop(_tree, _x, _y-1);
+}
+
+bool CheckBot(int _tree, int _x, int _y) {
+	if (_y >= FOREST_HEIGHT - 1)
+	{ return _tree > GetTree(_x, FOREST_HEIGHT-1); }
+
+	int currTree = GetTree(_x, _y);
+
+	if (currTree < GetTree(_x, _y + 1) || currTree >= _tree) {
+		return false;
+	}
+	return CheckBot(_tree, _x, _y + 1);
+}
+// =========================================================
+bool CheckIfVisible(int _x, int _y) {
+	bool left, right, top, bot;
+	std::cout << "\nChecking Tree{" << _x << "},{" << _y << "}: height("<< GetTree(_x, _y)<<"):	";
+
+	int currTree = GetTree(_x, _y);
+	if (_x == 0 || _x >= FOREST_WIDTH-1)
 	{
-		std::cout << "Center SIDE\n";
-		return CheckIfVisible(_x - 1, _y) || CheckIfVisible(_x + 1, _y);
-
-
+		std::cout << "Visible (Edge)";
+		return true;
 	}
-	// LEFT
-	else if (_x <= FOREST_WIDTH / 2) {
-		std::cout << "LEFT: ";
-
-		if (_x == 0) {					// If Left Tree is non-existen	->	return true
-			std::cout << "	true\n";
-			return true;
-		}
-
-		if (GetTree(_x - 1, _y) >= GetTree(_x, _y))		// If Left Tree is taller		->	return false
-		{
-			return false;
-		}
-		else											// If Left Tree is smaller		->	check Left Tree
-		{
-			return CheckIfVisible(_x - 1, _y);
-		}
+	if (_y == 0 || _y >= FOREST_HEIGHT-1)
+	{ 
+		std::cout << "Visible (Edge)";
+		return true;
 	}
-	// RIGHT
-	else
+
+	left = CheckLeft(currTree, _x - 1, _y);
+	if (left)
 	{
-		std::cout << "RIGHT: ";
-
-		if (_x == 0) {					// If Left Tree is outmost tree	->	return true
-			std::cout << "	true\n";
-			return true;
-		}
-
-		if (GetTree(_x + 1, _y) >= GetTree(_x, _y))		// If Left Tree is taller		->	return false
-		{
-			return false;
-		}
-		else											// If Left Tree is smaller		->	check Left Tree
-		{
-			return CheckIfVisible(_x + 1, _y);
-		}
+		std::cout << "LEFT Visible";
+		return true;
 	}
+	std::cout << "!LEFT -> ";
 
-
-	// CENTER SIDE 
-	if (_y == FOREST_HEIGHT / 2)
+	right = CheckRight(currTree, _x + 1, _y);
+	if (right)
 	{
-		std::cout << "Center HEIGHT\n";
+		std::cout << "RIGHT Visible";
+		return true;
 	}
-	// TOP
-	else if (_y <= FOREST_HEIGHT / 2)
+	std::cout << "!RIGHT -> ";
+
+	top = CheckTop(currTree, _x, _y - 1);
+	if (top)
 	{
-		std::cout << "TOP\n";
+		std::cout << "TOP Visible";
+		return true;
 	}
-	// BOTTOM
-	else
+	std::cout << "!TOP -> ";
+
+	bot = CheckBot(currTree, _x, _y + 1);
+	if (bot)
 	{
-		std::cout << "BOTTOM\n";
-
+		std::cout << "BOTTOM Visible";
+		return true;
 	}
+	std::cout << "!BOTTOM";
 
-	return 1;
-
-	*/
+	return false;
 }
 
 void CreateForest(int _col, std::string _row) {
@@ -135,9 +154,17 @@ void ReadFile(std::string _file) {
 
 int main()
 {
-	ReadFile("Test_Input.txt");
+	int total = 0;
+	ReadFile("Input.txt");
 	FOREST_HEIGHT = mForest.size();
 	FOREST_WIDTH = mForest[0].size();
 
-	CheckIfVisible(3, 1);
+	for (int x = 0; x < FOREST_WIDTH; x++)
+	{
+		for (int y = 0; y < FOREST_HEIGHT; y++)
+		{
+			total += CheckIfVisible(x, y);
+		}
+	}
+	std::cout << "\n\nTotal Visible Trees: " << total << "\n";
 }
