@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>26</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>MySetup</FUNCTION>
+    <DECORATED>?MySetup@@YA?AV?$vector@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@V?$allocator@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>26</LINE>
+      <COLUMN>20</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>MySetup</FUNCTION>
+    <DECORATED>?MySetup@@YA?AV?$vector@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@V?$allocator@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>38</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>MySetup</FUNCTION>
+    <DECORATED>?MySetup@@YA?AV?$vector@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@V?$allocator@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>33</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>MySetup</FUNCTION>
+    <DECORATED>?MySetup@@YA?AV?$vector@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@V?$allocator@V?$stack@DV?$deque@DV?$allocator@D@std@@@std@@@std@@@2@@std@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>50</LINE>
+      <COLUMN>86</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>PartOne</FUNCTION>
+    <DECORATED>?PartOne@@YAXV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>35</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>50</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>PartOne</FUNCTION>
+    <DECORATED>?PartOne@@YAXV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>35</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>51</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>PartOne</FUNCTION>
+    <DECORATED>?PartOne@@YAXV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>35</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>73</LINE>
+      <COLUMN>51</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>PartTwo</FUNCTION>
+    <DECORATED>?PartTwo@@YAXV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>56</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>74</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>PartTwo</FUNCTION>
+    <DECORATED>?PartTwo@@YAXV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>56</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 05\</FILEPATH>
+      <FILENAME>Day 05.cpp</FILENAME>
+      <LINE>80</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>PartTwo</FUNCTION>
+    <DECORATED>?PartTwo@@YAXV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
+    <FUNCLINE>56</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>

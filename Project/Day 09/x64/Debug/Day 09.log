@@ -1,0 +1,5 @@
+﻿  Day 09.cpp
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 09\Day 09.cpp(63,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 09\Day 09.cpp(86,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 09\Day 09.cpp(86,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Day 09.vcxproj -> C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 09.exe

@@ -1,5 +1,7 @@
 ﻿  Day 07.cpp
   FileSystem.cpp
   Node.cpp
+  Running Code Analysis for C/C++...
   Generating Code...
   Day 07.vcxproj -> C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 07.exe
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 07\Node.cpp(11): warning C26495: Variable 'Node::parent' is uninitialized. Always initialize a member variable (type.6).

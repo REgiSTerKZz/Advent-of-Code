@@ -1,0 +1,2 @@
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 04.exe.lastcodeanalysissucceeded
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 04\x64\Debug\NativeCodeAnalysis.read.1.tlog

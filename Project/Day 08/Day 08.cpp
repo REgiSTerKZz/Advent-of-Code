@@ -83,7 +83,7 @@ bool CheckBot(int _tree, int _x, int _y) {
 }
 // =========================================================
 // Response: 1733
-bool CheckIfVisible(int _x, int _y) {
+bool PartOne(int _x, int _y) {
 	bool left, right, top, bot;
 	//std::cout << "\nChecking Tree{" << _x << "},{" << _y << "}: height("<< GetTree(_x, _y)<<"):	";
 
@@ -181,7 +181,7 @@ int main()
 	{
 		for (int x = 0; x < FOREST_HEIGHT; x++)
 		{
-			bool b = CheckIfVisible(x, y);
+			bool b = PartOne(x, y);
 			total += b;
 			mColor = (b) ? GREEN : RED;
 			SetColor(mColor);

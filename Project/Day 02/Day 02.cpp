@@ -29,6 +29,14 @@ void SetColor(int _c) {
 /// <summary>
 /// Given a Delimiter, splits the string input into different strings
 /// </summary>
+
+
+/// <summary>
+/// Given a Delimiter, Splits the inputed String into diferent strings
+/// </summary>
+/// <param name="s">Input String</param>
+/// <param name="delimiter">Delimiter</param>
+/// <returns>Vector of Strings</returns>
 std::vector<std::string> Split(const std::string& s, char delimiter)
 {
 	std::vector<std::string> tokens;
