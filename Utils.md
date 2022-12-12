@@ -11,6 +11,9 @@
 ## Read Files
 * **Read File:** Single Line at a time
 ```C++
+#include <fstream>		// File sys
+#include <string>		// std::string
+
 /// <summary>
 /// Given FileName where input is, reads each line from the file.
 /// </summary>
@@ -252,5 +255,18 @@ void cls(HANDLE hConsole)
 
 int main(){
 	cls(hConsole);
+}
+```
+
+* **Draw Array:**
+```C++
+void Draw2Darray(std::vector<std::vector<Cell>> _arr) {
+	for (int i = 0; i < _arr.size(); i++) {
+		for (int j = 0; j < _arr[0].size(); j++) {
+			std::cout << _arr[i][j].height;
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\n";
 }
 ```
