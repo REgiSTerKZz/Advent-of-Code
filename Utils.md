@@ -5,6 +5,7 @@
 2. [Distances](#Distances)
 3. [Dictionaries](#Dictionaries)
 4. [Other](#Other)
+5. [Console](#Console)
 
 
 ## Read Files
@@ -60,18 +61,19 @@ void ReadFile(std::string _file) {
 
 * **Create 1D Index from 2D Array (X, Y):**
 ```C++
-/// <summary>
-/// Create 1D Index from 2D Array (X, Y)
-/// </summary>
-/// <param name="_x">Rows</param>
-/// <param name="_xLength">Rows Length</param>
-/// <param name="_y">Columns</param>
-/// <returns></returns>
 int Index(int _x, int _xLength, int _y)
 {
 	return (_x * _xLength) + _y;
 }
 ```
+
+* **Create 2D Index from 1D (X, xLenght):**
+```C++
+std::pair < int, int> Index_1Dto2D(int i, int _xLenght) {
+	return { i / _xLenght , i%_xLenght};
+}
+```
+
 
 
 * **Splits the inputed String into diferent strings:**
@@ -126,6 +128,16 @@ std::map<char, std::pair<int, int>> mDirections = {
 
 ## Distances
 
+* **Euclidian:** with Pairs
+```C++
+// Euclidian Distance with Pairs
+int Distance(std::pair<int, int> _pos1, std::pair<int, int> _pos2) {
+	return sqrt(
+		((_pos1.first - _pos2.first) * (_pos1.first - _pos2.first)) +
+		((_pos1.second - _pos2.second) * (_pos1.second - _pos2.second))
+	);
+}
+```
 * **Manhattan:**
 ```C++
 	// Manhattan Distance
@@ -140,6 +152,8 @@ std::map<char, std::pair<int, int>> mDirections = {
 		return abs(_pos1.first - _pos2.first) + abs(_pos1.second - _pos2.second);
 	}
 ```
+
+
 * **Create Vector from 2 Points:**
 ```C++
 	// Vector from A to B = B - A
@@ -165,5 +179,78 @@ std::pair <int, int> NormalizedVector(std::pair <int, int> A, std::pair <int, in
 template <typename T, typename U>
 std::pair<T, U> operator+(const std::pair<T, U>& l, const std::pair<T, U>& r) {
 	return { l.first + r.first,l.second + r.second };
+}
+```
+
+## Console
+
+* **Init Windonws.h:**
+```C++
+#include <Windows.h>
+
+HANDLE hConsole;
+
+int main(){
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+}
+```
+
+* **Set Console Color:**
+```C++
+enum COLOR
+{
+	BLUE = 1,
+	GREEN = 2,
+	RED = 4,
+	WHITE = 7
+};
+
+// c = COLOR
+void SetColor(int _c) {
+	SetConsoleTextAttribute(hConsole, _c);
+}
+```
+
+* **Clear Console:**
+```C++
+void cls(HANDLE hConsole)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    SMALL_RECT scrollRect;
+    COORD scrollTarget;
+    CHAR_INFO fill;
+
+    // Get the number of character cells in the current buffer.
+    if (!GetConsoleScreenBufferInfo(hConsole, &csbi))
+    {
+        return;
+    }
+
+    // Scroll the rectangle of the entire buffer.
+    scrollRect.Left = 0;
+    scrollRect.Top = 0;
+    scrollRect.Right = csbi.dwSize.X;
+    scrollRect.Bottom = csbi.dwSize.Y;
+
+    // Scroll it upwards off the top of the buffer with a magnitude of the entire height.
+    scrollTarget.X = 0;
+    scrollTarget.Y = (SHORT)(0 - csbi.dwSize.Y);
+
+    // Fill with empty spaces with the buffer's default text attribute.
+    fill.Char.UnicodeChar = TEXT(' ');
+    fill.Attributes = csbi.wAttributes;
+
+    // Do the scroll
+    ScrollConsoleScreenBuffer(hConsole, &scrollRect, NULL, scrollTarget, &fill);
+
+    // Move the cursor to the top left corner too.
+    csbi.dwCursorPosition.X = 0;
+    csbi.dwCursorPosition.Y = 0;
+
+    SetConsoleCursorPosition(hConsole, csbi.dwCursorPosition);
+}
+
+int main(){
+	cls(hConsole);
 }
 ```
