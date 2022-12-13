@@ -89,8 +89,11 @@ int Field::GetPathLength()
 	Cell* c = goalCell;
 	while (c != startCell)
 	{
+		mPath.push_back(c);
 		c = c->cameFrom;
-		l++;
+		if (c->height == 0)
+		{ return l; }
+		l++; 
 	}
 	return l;
 }

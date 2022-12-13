@@ -4,9 +4,25 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <Windows.h>
 
 #include "Field.h"
 
+HANDLE hConsole;
+enum COLOR
+{
+	BLUE = 1,
+	GREEN = 2,
+	RED = 4,
+	WHITE = 7,
+	START = 237,
+	END = 170
+};
+
+// c = COLOR
+void SetColor(int _c) {
+	SetConsoleTextAttribute(hConsole, _c);
+}
 
 void CreateField(int row, std::string _s, Field &_f) {
 	// Add Row
@@ -31,17 +47,29 @@ void Draw2Darray(std::vector<std::vector<Cell*>> _arr) {
 	std::cout << "\n";
 }
 
-void Draw2DarrayAsChar(std::vector<std::vector<Cell*>> _arr) {
-	for (int i = 0; i < _arr.size(); i++) {
-		for (int j = 0; j < _arr[0].size(); j++) {
-			if (_arr[i][j]->visited)
-			{
-				std::cout << char(_arr[i][j]->height + 97);
-			}
+void Draw2DarrayAsChar(Field &mField) {
+	//SetColor(WHITE);
+	for (int i = 0; i < mField.mField.size(); i++) {
+		for (int j = 0; j < mField.mField[0].size(); j++) {
+
+			std::vector<Cell*>::iterator it;
+			it = std::find(mField.mPath.begin(), mField.mPath.end(), mField.mField[i][j]);
+
+			if (it != mField.mPath.end())
+			{ SetColor(GREEN); }
 			else
+			{ SetColor(WHITE); }
+
+			if (mField.mField[i][j]->c == 'S')
 			{
-				std::cout << "~";
+				SetColor(START);
 			}
+			else if (mField.mField[i][j]->c == 'E')
+			{
+				SetColor(END);
+			}
+			char d = (mField.mField[i][j]->visited) ? mField.mField[i][j]->c : '~';
+			std::cout << d;
 		}
 		std::cout << "\n";
 	}
@@ -72,7 +100,7 @@ void ReadFile(std::string _file, Field &mField) {
 	std::cout << "Goal : {" << mField.goalCell->mPos.first << "}{" << mField.goalCell->mPos.second << "}\n";
 
 	std::cout << "\nTotal Steps: " << mField.BFS() << std::endl;
-	// Draw2DarrayAsChar(mField.mField);
+	Draw2DarrayAsChar(mField);
 
 	mFile.close();
 }
@@ -82,6 +110,7 @@ void ReadFile(std::string _file, Field &mField) {
 // Response: 
 int main()
 {
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	Field mField = Field();
 	ReadFile("Input.txt", mField);
 }

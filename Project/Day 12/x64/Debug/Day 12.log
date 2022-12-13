@@ -1,6 +1,2 @@
 ﻿  Day 12.cpp
-  Field.cpp
-C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.cpp(12,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.cpp(13,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   Day 12.vcxproj -> C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 12.exe

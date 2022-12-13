@@ -10,6 +10,7 @@ public:
 	Cell* goalCell;
 
 	std::vector<std::vector<Cell*>> mField;
+	std::vector<Cell* > mPath;
 
 	Field();
 	void GenerateNeighbours();
