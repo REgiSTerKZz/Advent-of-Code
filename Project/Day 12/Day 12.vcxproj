@@ -136,6 +136,7 @@
     <ClInclude Include="Field.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Input.txt" />
     <Text Include="Test_Input.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

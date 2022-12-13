@@ -1,12 +1,73 @@
 # Advent Of Code Utils:
 
 ## INDEX:
-1. [Read Files](#Read-Files)
-2. [Distances](#Distances)
-3. [Dictionaries](#Dictionaries)
-4. [Other](#Other)
-5. [Console](#Console)
+* [Custom Variables](#Custom-Variables)
+* [Distances](#Distances)
+* [Read Files](#Read-Files)
+* [Dictionaries](#Dictionaries)
+* [Iterate Arrays](#Iterate-Arrays)
+* [Overload Operators](#Overload-Operators)
+* [Console](#Console)
 
+<details>
+	<summary>Custom Variables</summary>
+
+	## Custom Variables
+	* **Vector 2**
+	```C++
+	// iPair ==> Integer Pair
+	typedef pair<int, int> iPair;
+	```
+</details>
+<details>
+	<summary>Distances</summary>
+
+## Distances
+
+* **Euclidian:** with Pairs
+```C++
+// Euclidian Distance with Pairs
+int Distance(std::pair<int, int> _pos1, std::pair<int, int> _pos2) {
+	return sqrt(
+		((_pos1.first - _pos2.first) * (_pos1.first - _pos2.first)) +
+		((_pos1.second - _pos2.second) * (_pos1.second - _pos2.second))
+	);
+}
+```
+* **Manhattan:**
+```C++
+	// Manhattan Distance
+	int Distance(int _x1, int _y1, int _x2, int _y2) {
+		return abs(_x1 - _x2) + abs(_y1 - _y2);
+	}
+```
+* **Manhattan:** with Pairs
+```C++
+	// Manhattan Distance with Pairs
+	int Distance(std::pair<int, int> _pos1, std::pair<int, int> _pos2) {
+		return abs(_pos1.first - _pos2.first) + abs(_pos1.second - _pos2.second);
+	}
+```
+
+* **Create Vector from 2 Points:**
+```C++
+	// Vector from A to B = B - A
+	std::pair<int, int> Vector(std::pair<int, int> A, std::pair<int, int> B) {
+		return std::make_pair(B.first - A.first, B.second - A.second);
+	}
+```
+* **Create Normalized Vector from 2 Points:**
+```C++
+// Vector from A to B = B - A normalized
+std::pair <int, int> NormalizedVector(std::pair <int, int> A, std::pair <int, int> B) {
+	auto vec = std::make_pair((B.first - A.first), (B.second - A.second));
+	int l = sqrt(vec.first * vec.first + vec.second * vec.second);
+	return { vec.first / l, vec.second / l };
+}
+```
+</details>
+<details>
+	<summary>Read Files</summary>
 
 ## Read Files
 * **Read File:** Single Line at a time
@@ -59,8 +120,27 @@ void ReadFile(std::string _file) {
 
 
 ```
+</details>
+<details>
+	<summary>Dictionaries</summary>
 
-## Other
+## Dictionaries
+
+```C++
+std::map<char, std::pair<int, int>> mDirections = {
+		{'R', { 1,  0}},
+		{'L', {-1,  0}},
+		{'U', { 0, -1}},
+		{'D', { 0,  1}},
+};
+
+// mDirections['R'] => returns {1, 0} as std::pair
+```
+</details>
+<details>
+	<summary>Iterate Arrays</summary>
+
+## Iterate Arrays
 
 * **Create 1D Index from 2D Array (X, Y):**
 ```C++
@@ -76,8 +156,6 @@ std::pair < int, int> Index_1Dto2D(int i, int _xLenght) {
 	return { i / _xLenght , i%_xLenght};
 }
 ```
-
-
 
 * **Splits the inputed String into diferent strings:**
 ```C++
@@ -114,65 +192,9 @@ std::pair<char, int> Split(const std::string& s, char delimiter)
 	return { tokens[0][0], std::stoi(tokens[1]) };
 }
 ```
-
-
-## Dictionaries
-
-```C++
-std::map<char, std::pair<int, int>> mDirections = {
-		{'R', { 1,  0}},
-		{'L', {-1,  0}},
-		{'U', { 0, -1}},
-		{'D', { 0,  1}},
-};
-
-// mDirections['R'] => returns {1, 0} as std::pair
-```
-
-## Distances
-
-* **Euclidian:** with Pairs
-```C++
-// Euclidian Distance with Pairs
-int Distance(std::pair<int, int> _pos1, std::pair<int, int> _pos2) {
-	return sqrt(
-		((_pos1.first - _pos2.first) * (_pos1.first - _pos2.first)) +
-		((_pos1.second - _pos2.second) * (_pos1.second - _pos2.second))
-	);
-}
-```
-* **Manhattan:**
-```C++
-	// Manhattan Distance
-	int Distance(int _x1, int _y1, int _x2, int _y2) {
-		return abs(_x1 - _x2) + abs(_y1 - _y2);
-	}
-```
-* **Manhattan:** with Pairs
-```C++
-	// Manhattan Distance with Pairs
-	int Distance(std::pair<int, int> _pos1, std::pair<int, int> _pos2) {
-		return abs(_pos1.first - _pos2.first) + abs(_pos1.second - _pos2.second);
-	}
-```
-
-
-* **Create Vector from 2 Points:**
-```C++
-	// Vector from A to B = B - A
-	std::pair<int, int> Vector(std::pair<int, int> A, std::pair<int, int> B) {
-		return std::make_pair(B.first - A.first, B.second - A.second);
-	}
-```
-* **Create Normalized Vector from 2 Points:**
-```C++
-// Vector from A to B = B - A normalized
-std::pair <int, int> NormalizedVector(std::pair <int, int> A, std::pair <int, int> B) {
-	auto vec = std::make_pair((B.first - A.first), (B.second - A.second));
-	int l = sqrt(vec.first * vec.first + vec.second * vec.second);
-	return { vec.first / l, vec.second / l };
-}
-```
+</details>
+<details>
+	<summary>Overload Operators</summary>
 
 ## Overload Operators
 
@@ -184,6 +206,9 @@ std::pair<T, U> operator+(const std::pair<T, U>& l, const std::pair<T, U>& r) {
 	return { l.first + r.first,l.second + r.second };
 }
 ```
+</details>
+<details>
+	<summary>Console</summary>
 
 ## Console
 
@@ -270,3 +295,4 @@ void Draw2Darray(std::vector<std::vector<Cell>> _arr) {
 	std::cout << "\n";
 }
 ```
+</details>

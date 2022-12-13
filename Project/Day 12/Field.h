@@ -6,15 +6,22 @@ class Field
 public:
 	int FIELD_WIDTH, FIELD_HEIGHT;
 
-	Cell currentCell;
-	Cell goalCell;
+	Cell* startCell;
+	Cell* goalCell;
 
-	std::vector<std::vector<Cell>> mField;
+	std::vector<std::vector<Cell*>> mField;
 
 	Field();
-	std::map<char, Cell> GetNeighbours(Cell _c);
 	void GenerateNeighbours();
+	int BFS();
 
 private:
+	int GetPathLength();
 	bool isBorder(int _pos, char c);
+	std::map<int, char> mDirections = {
+	{0, 'R'},
+	{1, 'L'},
+	{2, 'U'},
+	{3, 'D'},
+	};
 };
