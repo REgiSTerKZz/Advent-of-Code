@@ -77,6 +77,16 @@ void Draw2DarrayAsChar(Field &mField) {
 }
 
 
+int Part2(Field &mField) {
+	int minPath = 100000000;
+
+	for (int i = 0; i < mField.mField.size(); i++)
+	{
+		minPath = min(minPath, mField.BFS(mField.mField[i][0]));
+	}
+	return minPath;
+}
+
 void ReadFile(std::string _file, Field &mField) {
 	std::ifstream mFile;
 	std::string mString;
@@ -99,15 +109,18 @@ void ReadFile(std::string _file, Field &mField) {
 	std::cout << "Start: {" << mField.startCell->mPos.first << "}{" << mField.startCell->mPos.second << "}\n";
 	std::cout << "Goal : {" << mField.goalCell->mPos.first << "}{" << mField.goalCell->mPos.second << "}\n";
 
-	std::cout << "\nTotal Steps: " << mField.BFS() << std::endl;
+	// std::cout << "\nTotal Steps: " << mField.BFS(mField.startCell) << std::endl;
+	std::cout << "\nTotal Steps: " << Part2(mField) << std::endl;
+
+	
+
 	Draw2DarrayAsChar(mField);
 
 	mFile.close();
 }
 
-
 // Response: 412
-// Response: 
+// Response: 402 Resposne 401 + 1 since the first A cell is not beeing added
 int main()
 {
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

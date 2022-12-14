@@ -37,10 +37,14 @@ void Field::GenerateNeighbours()
 	}
 }
 
-int Field::BFS()
+int Field::BFS(Cell* sCell)
 {
+	// Clean visited Cells
+	ClearVisited();
+	startCell = sCell;
+
 	int totalSteps = 0;
-	Cell* _cell = startCell;
+	Cell* _cell = sCell;
 	// Create queue
 	std::list<Cell*> queue;
 
@@ -83,18 +87,46 @@ int Field::BFS()
 	return totalSteps;
 }
 
+void Field::ClearVisited()
+{
+	for (int i = 0; i < mField.size(); i++) {
+		for (int j = 0; j < mField[0].size(); j++) {
+			mField[i][j]->visited = false;
+		}
+	}
+}
+
 int Field::GetPathLength()
 {
+	// Temp path
+	std::vector<Cell*> tPath;
+
+
 	int l = 0;
 	Cell* c = goalCell;
 	while (c != startCell)
 	{
-		mPath.push_back(c);
+		tPath.push_back(c);
 		c = c->cameFrom;
 		if (c->height == 0)
-		{ return l; }
+		{
+			break; // return l; 
+		}
 		l++; 
 	}
+	if (mPath.size() == 0)
+	{
+		mPath = tPath;
+	}
+
+	if (tPath.size() < mPath.size())
+	{
+		// Copy tempPath to the mPath copy
+		mPath.clear();
+		mPath = tPath;
+	}
+
+
 	return l;
 }
 

@@ -14,9 +14,11 @@ public:
 
 	Field();
 	void GenerateNeighbours();
-	int BFS();
+	int BFS(Cell* sCell);
 
 private:
+	void ClearVisited();
+
 	int GetPathLength();
 	bool isBorder(int _pos, char c);
 	std::map<int, char> mDirections = {
