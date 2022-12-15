@@ -1,6 +1,9 @@
 ﻿  Day 12.cpp
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.h(22,2): error C2144: syntax error: 'int' should be preceded by ';'
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.h(22,6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
   Field.cpp
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.h(22,2): error C2144: syntax error: 'int' should be preceded by ';'
+C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.h(22,6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.cpp(12,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\j-rei\Desktop\Advent-of-Code\Project\Day 12\Field.cpp(13,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-  Day 12.vcxproj -> C:\Users\j-rei\Desktop\Advent-of-Code\Project\x64\Debug\Day 12.exe

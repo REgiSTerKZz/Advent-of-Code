@@ -17,7 +17,7 @@ public:
 	int BFS(Cell* sCell);
 
 private:
-	void ClearVisited();
+	void ClearVisited();asdf
 
 	int GetPathLength();
 	bool isBorder(int _pos, char c);

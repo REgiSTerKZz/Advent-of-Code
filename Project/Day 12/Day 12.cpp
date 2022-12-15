@@ -113,7 +113,7 @@ void ReadFile(std::string _file, Field &mField) {
 	std::cout << "\nTotal Steps: " << Part2(mField) << std::endl;
 
 	
-
+	
 	Draw2DarrayAsChar(mField);
 
 	mFile.close();
